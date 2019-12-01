@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
+from django.template.loader import get_template
 
 class Persona(object):
   def __init__(self, name, last_name):
@@ -13,6 +14,11 @@ def saludo(request):
   doc_externo.close()
   ctx=Context()
   document=plt.render(ctx)
+  return HttpResponse(document)
+
+def template(request):
+  view=get_template('home.html')
+  document=view.render({})
   return HttpResponse(document)
 
 def variables(request):
