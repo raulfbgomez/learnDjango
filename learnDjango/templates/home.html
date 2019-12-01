@@ -8,6 +8,22 @@
 </head>
 <body>
   <h1>Hello World from Django</h1>
-  <p>El nombre de la persona es {{ name_person }} {{ last_name }}</p>
+  <p>El nombre de la persona es {{ name_person.upper }} {{ last_name.upper }}</p>
+  <h2>Themes</h2>
+  <ul>
+    {% for tema in temas %}
+      <li>{{ tema }}</li>
+    {% endfor %}
+  </ul>
+  <h3>Others</h3>
+  {% if otros_temas %}
+    <ul>
+      {% for t in otros_temas %}
+        <li>{{ t }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No se encontró información</p>
+  {% endif %}
 </body>
 </html>

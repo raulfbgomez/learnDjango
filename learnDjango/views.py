@@ -17,12 +17,19 @@ def saludo(request):
 
 def variables(request):
   p1=Persona('Lalo', 'Díaz')
+  temas=['Templates', 'Models']
+  otros_temas=[]
   # name='Juanito'
   # last_name='Ramirez'
   doc_externo=open('/var/www/html/proyectos-django/learnDjango/learnDjango/templates/home.html')
   plt=Template(doc_externo.read())
   doc_externo.close()
-  ctx=Context({'name_person': p1.name, 'last_name': p1.last_name})
+  ctx=Context({
+    'name_person': p1.name, 
+    'last_name': p1.last_name,
+    'temas': temas,
+    'otros_temas': otros_temas
+  })
   document=plt.render(ctx)
   return HttpResponse(document)
 
